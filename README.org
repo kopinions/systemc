@@ -1,0 +1,17 @@
+* install systemc
+  #+BEGIN_SRC shell :eval never :exports code
+    curl https://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.3.tar.gz | tar -zxf - 
+    cd systemc-2.3.3
+    cmake ../ -DCMAKE_CXX_STANDARD=17 -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=~/.local
+    make && make intall
+  #+END_SRC
+
+* compile
+  #+BEGIN_SRC shell :eval never :exports code
+  make
+  make test
+  #+END_SRC
+
+
+
+
