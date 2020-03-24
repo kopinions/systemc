@@ -2,9 +2,9 @@ GTKWAVE:= which gtkwave
 TARGET := build/alu
 CXX := g++
 LD := $(CXX) 
-C_FLAGS := -I/usr/local/systemc-2.3.2/include -O0 -g3 -Wall -c
-LD_OPTIONS = -L/usr/local/systemc-2.3.2/lib-linux64 -o $(TARGET)
-LIBS := -lsystemc
+C_FLAGS := -I${HOME}/.local/include -c -O0 -g3 -Wall
+LD_OPTIONS = -L${HOME}/.local/lib -DSC_CPLUSPLUS=201703L -std=c++17 -o $(TARGET)
+LIBS :=  -lsystemc
 C_SOURCES = $(shell ls *.cc)
 C_OBJS := $(patsubst %.cc, %.o, $(C_SOURCES))
 
@@ -13,7 +13,7 @@ C_OBJS := $(patsubst %.cc, %.o, $(C_SOURCES))
 	@echo '--------------------'
 	@echo 'Invoking: GNU CPP Compiler'
 	echo $(C_FLAGS)
-	$(CXX) $(C_FLAGS) $< -o $@
+	$(CXX) $(C_FLAGS) -DSC_CPLUSPLUS=201703L -std=c++17 $< -o $@
 	@echo 'Finished building: $(@F)'
 	@echo ' '
 
