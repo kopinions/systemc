@@ -5,19 +5,19 @@
 
 SC_MODULE(ALU) {
 
-  sc_in<sc_uint<3>> opcode;
-  sc_in<sc_uint<4>> op1,op2;
-  sc_out<bool> carry;
-  sc_out<sc_uint<4>> result;
+  sc_in<sc_uint<3>> OPCODE;
+  sc_in<sc_uint<4>> OP1,OP2;
+  sc_out<bool> CARRY;
+  sc_out<sc_uint<4>> RESULT;
   
   void operate();
 
-  sc_uint<4> data1, data2;
-  sc_uint<5> res;
+  sc_uint<4> DATA1, DATA2;
+  sc_uint<5> RES;
   
   SC_CTOR(ALU) {
     SC_METHOD(operate);
-    sensitive << opcode << op1 << op2;
+    sensitive << OPCODE << OP1 << OP2;
   }
 };
 #endif
