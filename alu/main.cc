@@ -29,5 +29,16 @@ int sc_main(int argc, char* argv[]){
   mon.OP2(s_op2);
   mon.RESULT(s_result);
 
+  sc_trace_file *fp = sc_create_vcd_trace_file("vcd_trace");
+  fp->set_time_unit(1, SC_NS);
+
+  sc_trace(fp, s_opcode, "OPCODE");
+  sc_trace(fp, s_op1, "OP1");
+  sc_trace(fp, s_op2, "OP2");
+  sc_trace(fp, s_carry, "CARRY");
+  sc_trace(fp, s_result, "RESULT");
+
   sc_start(50, SC_NS);
+  sc_close_vcd_trace_file(fp);
+  return 0;
 }
